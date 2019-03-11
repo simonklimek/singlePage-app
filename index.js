@@ -26,7 +26,7 @@ const server = http.createServer((req, res) => {
             break;
         case '.css':
             contentType = 'text/css';
-            break;    
+            break;
         case '.json':
             contentType = 'text/json';
             break;
@@ -40,8 +40,8 @@ const server = http.createServer((req, res) => {
 
     // Read file
     fs.readFile(filePath, (err, content) => {
-        if(err) {
-            if(err.code == 'ENOENT') {
+        if (err) {
+            if (err.code == 'ENOENT') {
                 // Page not found
                 fs.readFile(path.join(__dirname, 'public', '404.html'), (err, content) => {
                     res.writeHead(200, {'Content-Type': 'text/html'});
@@ -58,7 +58,6 @@ const server = http.createServer((req, res) => {
             res.end(content, 'utf8');
         }
     });
-
 
 });
 
