@@ -37,3 +37,10 @@ fs.rename(
         if (err) throw err;
         console.log('File renamed');
 });
+
+// Watching file
+
+const watcher = fs.watch('/test/helloworld.txt');
+watcher.on('change', (event,filename) {
+    console.log(`${event} on file ${filename}`)
+});
