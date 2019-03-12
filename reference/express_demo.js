@@ -1,11 +1,14 @@
 const express = require('express');
 const app = express();
 
-app.get('/', (req, res) => {
-    res.send('Hello World')
-});
+// app.get('/', (req, res) => {
+//     res.send('Hello World')
+// });
+// set up express to server static files from directory called public -> important 
+app.use(express.static('../public'));
 
-// Basic CRUD example
+
+// Basic CRUD examples
 
 app.get('/users', (req,res) => {
     // get all users
@@ -30,5 +33,5 @@ app.delete('/users/:id', (req, res) => {
 })
 
 app.listen(8000, () => {
-    console.log('Example app listening on port 80000');
+    console.log('Example app listening on port 8000');
 });
