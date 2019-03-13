@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1 #{title}
+  if (articles.length === 0)
+    | There's no published content yet.
+    br
+    a(href="/login") Log in
+    | to post and public.
+  else
+    .right.hide-on-med-and-down
+      ul
+        each article, index in articles
+          li
+            h3
+              a(href="articles/#{article.slug}")= article.title
+            p=article.body
+            p 
+              i=article.author
