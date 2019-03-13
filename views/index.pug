@@ -1,19 +1,38 @@
 extends layout
 
 block content
-  h1 #{title}
-  if (articles.length === 0)
-    | There's no published content yet.
-    br
-    a(href="/login") Log in
-    | to post and public.
-  else
-    .right.hide-on-med-and-down
-      ul
-        each article, index in articles
-          li
-            h3
-              a(href="articles/#{article.slug}")= article.title
-            p=article.body
-            p 
-              i=article.author
+
+  div.row 
+    div.col.m8.s12 
+      h1 #{title}
+      div.row 
+        if (articles.length === 0)
+          | There's no published content yet.
+          br
+          a(href="/login") Log in
+          | to post and public.
+        else
+          each article, index in articles 
+            div.col.s12.m12 
+              div.card.horizontal.hoverable 
+                div.card-image 
+                  img(src="https://single-page-mdx.herokuapp.com/assets/6.jpg")
+                div.card-stacked 
+                  div.card-content
+                    p=article.body
+                    p
+                      i=article.author 
+                  div.card-action
+                    a(href="articles/#{article.slug}")= article.title
+                  
+    div.col.m4.s12 
+      div.row 
+        div.col.s-12 
+          h1 Users 
+          ul.collection
+            li.collection-item Alvin
+            li.collection-item Alvin
+            li.collection-item Alvin
+            li.collection-item Alvin
+            li.collection-item Alvin
+            li.collection-item Alvin

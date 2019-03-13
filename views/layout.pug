@@ -38,34 +38,26 @@ html
         div.container
             br
             br
-            div.row
-                div.col.m6.s12
-                    h1 REGISTER
-                    form.col.s12(method="POST", action="/users/registration")
-                        div.row
-                        div.input-field.col.s12
-                            input.validate(id="first_name", type="text")
-                            label(for="first_name") Login
-                        div.input-field.col.s12
-                            input.validate(id="password", type="password")
-                            label(for="password") Password
-                        div.input-field.col.s12
-                            input.validate(id="email2", type="email")
-                            label(for="email2") Password 
-                        button.btn.waves-effect.orange.waves-light(type="submit", name="action") Register
-                            i.material-icons.right check
-                div.col.m6.s12
-                    h1 LOGIN
-                    div.row
-                    form.col.s12(method="POST", action="/users/login")
-                        div.row
-                            div.input-field.col.s12
-                                i.material-icons.prefix account_circle
-                                input.validate(id="icon_prefix", type="text")
-                                label(for="icon_prefix") Login
+            block content
+            br
+            br
+    footer.page-footer.orange
+        div.container
+            div.row.valign-wrapper 
+                div.col.l6.s12 
+                    img(src="https://single-page-mdx.herokuapp.com/assets/logo-white.png", alt="", height="85px")
+                div.col.l3.s12 
+                    h5.white-text Social Media 
+                    ul 
+                        li 
+                            a.white-text(href="#") Link 1 
+                div.col.l3.s12 
+                    h5.white-text Links 
+                    ul 
+                        li 
+                            a.white-text(href="#") Link 1 
+        div.footer-copyright 
+            div.container Made by
+                a.orange-text.text-lighten-3(href="#")  Simon's network 
 
-    block content
-    br
-    hr
-    footer
-        p Copyrights &copy; 2019
+                
