@@ -6,9 +6,9 @@ const mysql = require('mysql');
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "root",
-  database: "mysql_alfa",
-  port: 8889
+  password: "",
+  database: "mysql_alfa"//"mysql_alfa",
+  //port: 3306 //8889
 });
 
 const app = express();
@@ -27,9 +27,9 @@ const app = express();
 
 db.connect((err) => {
     if(!err) {
-        console.log("Database is connected ... !!");    
+        console.log("[STATUS] Database is connected ... !!");    
     } else {
-        console.log("Error connecting database ... !!");    
+        console.log("[STATUS] Error connecting database ... !!");    
     }
     });
 
@@ -58,14 +58,14 @@ app.get("/",function(req,res){
       if (!err)
         console.log('The solution is: ', result);
       else {
-        console.log('Error while performing Query.');
+        console.log('[STATUS] Error while performing Query.');
       }});
     });
     
 app.get("/u",(req,res) => {
   db.query("SELECT name FROM users", (err, result)=> {
     if (err){
-        console.log(`custom error type: ${err}`);
+        console.log(`[STATUS] custom error type: ${err}`);
       } else {
   console.log(JSON.stringify(result));
   console.log('------------------------------');
@@ -75,12 +75,7 @@ app.get("/u",(req,res) => {
   }});
   });
 
-// json example
-app.get("/users", (req,res)=>{
-  const user1 = {name: "Simon", occupation: "WebDev", age: 27}
-  const user2 = {name: "Claire", occupation: "Designer", age: 22}
-  res.json([user1,user2])
-});
+
 
 
 

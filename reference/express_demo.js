@@ -10,6 +10,14 @@ app.use(express.static('../public'));
 
 // Basic CRUD examples
 
+// json example
+app.get("/usersjson", (req,res)=>{
+    const user1 = {name: "Simon", occupation: "WebDev", age: 27}
+    const user2 = {name: "Claire", occupation: "Designer", age: 22}
+    res.json([user1,user2])
+  });
+
+// json example2
 app.get('/users', (req,res) => {
     // get all users
     const users = [{id: 1, name: 'Simon'}, {id: 2, name: 'Radka'}]

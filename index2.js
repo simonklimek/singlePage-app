@@ -1,20 +1,21 @@
 const http = require('http');
 const path = require('path');
 const fs = require('fs');
-
+// Synchronous function
 const web = fs.readFileSync('./public/index.html');
 
 const server = http.createServer((req,res) => {
-    // Print the requests 
+   
+    // Print the requests from browser in console
     console.log(req.url);
 
     // Response
-    
     if (req.url === '/api/users') {
         const users = [
             { name: 'Bob Smith', age: 40 },
-            { name: 'Szymob Klimek', age: 28 }
+            { name: 'Szymon Klimek', age: 28 }
         ];
+
         // res.write('<h1>About Nodejs</h1>');
         res.writeHead(200, {'Content-Type': 'application/json'});
         res.end(JSON.stringify(users));
