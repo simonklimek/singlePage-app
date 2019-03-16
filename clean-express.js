@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-
 const app = express();
 
 app.set('views', path.join(__dirname, 'views'));
@@ -30,7 +29,7 @@ app.get('/', function(req, res) {
     
     
     res.render('index', {
-        title: "Articles list",
+        title: "POSTS",
         articles: articles
     });
 });
@@ -39,7 +38,19 @@ app.get('/articles/add', function(req, res) {
     res.render('add_article', {
         title: "Add Articles"
     });
-})
+});
+
+app.get('/register', function(req, res) {
+    res.render('register', {
+    });
+});
+
+
+app.get('/post', function(req, res) {
+    res.render('add_article', {
+        title: "POST AN ARTICLE"
+    });
+});
 
 app.listen(3000,function() {
     console.log('server started');

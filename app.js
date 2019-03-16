@@ -54,7 +54,7 @@ function addData() {
 // Routes
 
 app.get("/",function(req,res){
-    db.query('SELECT * FROM users LIMIT 2', function(err, result, fields) {
+    db.query('SELECT * FROM users LIMIT 2', (err, result, fields) => {
 
       if (!err)
         console.log('The solution is: ', result);
@@ -77,9 +77,7 @@ app.get("/u",(req,res) => {
   });
 
 
-
-
-
+// Connection POOL <-
 
 app.listen(3000);
 

@@ -1,11 +1,22 @@
 extends layout
 
 block content
-
-  div.row 
-    div.col.m8.s12 
-      h1 #{title}
-      div.row 
+  .row 
+    h3 SEARCH
+    .col.s12 
+        .card-panel.blue-grey.lighten-5 
+            .row.valign-wrapper 
+                .input-field.col.m9.s12 
+                    i.material-icons.prefix subdirectory_arrow_right 
+                    input.autocomlete(type="text", id="autocomplete-input")
+                    label(for="autocomplete-input") Autocomplete article search 
+                .col.m3.s12
+                    button.btn.waves-effect.orange.waves-light(type="submit", name="action") Search 
+                        i.material-icons.right search 
+  .row 
+    .col.m8.s12 
+      h3 #{title}
+      .row 
         if (articles.length === 0)
           | There's no published content yet.
           br
@@ -13,22 +24,22 @@ block content
           | to post and public.
         else
           each article, index in articles 
-            div.col.s12.m12 
-              div.card.horizontal.hoverable 
-                div.card-image 
+            .col.s12.m12 
+              .card.horizontal.hoverable 
+                .card-image 
                   img(src="https://single-page-mdx.herokuapp.com/assets/6.jpg")
-                div.card-stacked 
-                  div.card-content
+                .card-stacked 
+                  .card-content
                     p=article.body
                     p
                       i=article.author 
-                  div.card-action
+                  .card-action
                     a(href="articles/#{article.slug}")= article.title
                   
-    div.col.m4.s12 
-      div.row 
-        div.col.s-12 
-          h1 Users 
+    .col.m4.s12 
+      .row 
+        .col.m12 
+          h3 USERS 
           ul.collection
             li.collection-item Alvin
             li.collection-item Alvin
