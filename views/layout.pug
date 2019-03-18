@@ -4,7 +4,7 @@ html
         title Knowledgebase
         link(rel='stylesheet', href='https://single-page-mdx.herokuapp.com/css/materialize.css', type="text/css", media="screen,projection")
         link(rel='stylesheet', href='https://single-page-mdx.herokuapp.com/css/style.css', type="text/css", media="screen,projection")
-        link(rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons')    
+        link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')    
         meta(http-equiv="Content-Type", content="text/html; charset=UTF-8")
         meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0")
   
@@ -21,7 +21,7 @@ html
                     li 
                         a(href="#") Profile
                     li 
-                        a(href="#") Posts
+                        a.modal-trigger(href="#modal1") Write post
                 ul.sidenav(id="nav-mobile")
                     li 
                         a(href="#") Home
@@ -58,8 +58,8 @@ html
                                         label(for="post_title") Post title
                                     .input-field.col.m6.s12
                                         i.material-icons.prefix mode_edit
-                                        texarea.materialize-textarea(id="post_body")
-                                        label(for="post_body") Post body
+                                        textarea.materialize-textarea(id="textarea1")
+                                        label(for="textarea1") Post body
                                 .row
                                     .file-field.input-field.col.m6.s12
                                         .btn.red.lighten-3
@@ -68,7 +68,7 @@ html
                                         .file-path-wrapper
                                             input.file-path.validate(type="text")
                                     .col.m6.s12
-                                        button.btn-large.waves-effect.red.waves-light.right(type="submit", name="action") Post
+                                        button.btn-large.waves-effect.red.waves-light.right(type="submit", name="post_action") Post
                                             i.material-icons.right comment
 
 
@@ -98,7 +98,7 @@ html
                 i.large.material-icons mode_edit
     
     script(src="https://code.jquery.com/jquery-2.1.1.min.js")
-    script(scr="https://single-page-mdx.herokuapp.com/js/materialize.js")
+    script(src="https://single-page-mdx.herokuapp.com/js/materialize.js")
     script(src="https://single-page-mdx.herokuapp.com/js/init.js")
     script(src="https://single-page-mdx.herokuapp.com/js/post-btn.js")
 
