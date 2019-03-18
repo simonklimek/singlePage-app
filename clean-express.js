@@ -4,24 +4,13 @@
 // Login: POST /api/logins
 // https://github.com/azat-co/practicalnode/blob/master/chapter6/chapter6.md
 
-const mysql = require('mysql');
 const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const path = require('path');
-
-
-const pool = mysql.createPool({
-    connectionLimit: 10,
-    host: 'localhost',
-    user: 'root',
-    password: "password",
-    database: "nodelogin",  // mysql_alfa
-    port: 8889
-  });
+const pool = require('./mysql_connect');
   
 const app = express();
-
 
 // Body parser auth session
 app.use(session({
@@ -63,7 +52,6 @@ app.post('/auth', function(req, res) {
 });
 
 // SESSION
-
 app.get('/home', function(req, res) {
 	if (req.session.loggedin) {
 		res.send('Welcome back, ' + req.session.username + '!');
@@ -90,7 +78,6 @@ pool.query("SELECT * FROM posts", function(err, results) {
     articles = results;
 });
 
-
 // USERS
 pool.query("SELECT * FROM accounts", function(err, results) {
     if (err) throw err
@@ -105,28 +92,6 @@ pool.query("SELECT * FROM accounts", function(err, results) {
 // });
 
 app.get('/', function(req, res) {
-    // let articles = [
-    //     {
-    //         id:1,
-    //         title:'Article title',
-    //         author:'Simon Klimek',
-    //         body:'This is the blog article one'
-    //     },
-    //     {
-    //         id:2,
-    //         title:'Article title two',
-    //         author:'Arni Klimek',
-    //         body:'This is the blog article two'
-    //     },
-    //     {
-    //         id:3,
-    //         title:'Article title three',
-    //         author:'Tobias Klimek',
-    //         body:'This is the blog article three'
-    //     }
-    // ];
-    
-    
     res.render('index', {
         title: "POSTS",
         articles: articles,
@@ -152,7 +117,6 @@ app.get('/post', function(req, res) {
     });
 });
 
-// Error handling
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
@@ -178,12 +142,6 @@ app.listen(3000,function() {
     console.log('server started');
 })
 
-
-// pool.query('SELECT * FROM posts', function (error, results, fields) {
-//     if (error) throw error;
-//     console.log('The post is: ', results[0].title);
-//     console.log(JSON.stringify(results));
-//   });
 
 
 

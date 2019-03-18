@@ -1,0 +1,32 @@
+block post_btn
+
+    a.waves-effect.red.waves-light.btn.modal-trigger(href="#modal1") Write article
+
+    .modal.bottom-sheet(id="modal1")
+        .modal-content
+            a.modal-close.waves-effect.waves-green.btn-flat.right.red-text(href="#!") Close
+                i.large.material-icons.red-text cancel
+            .row
+                .col.s12
+                    .row
+                        .input-field.col.m6.s12
+                            i.material-icons.prefix title
+                            input.validate(id="post_title", type="text")
+                            label(for="post_title") Post title
+                        .input-field.col.m6.s12
+                            i.material-icons.prefix mode_edit
+                            texarea.materialize-textarea(id="post_body")
+                            label(for="post_body") Post body
+                    .row
+                        .file-field.input-field.col.m6.s12
+                            .btn.red.lighten-3
+                                span Attach picture
+                                input(type="file")
+                            .file-path-wrapper
+                                input.file-path.validate(type="text")
+                        .col.m6.s12
+                            button.btn-large.waves-effect.red.waves-light.right(type="submit", name="action") Post
+                                i.material-icons.right comment
+
+
+                                

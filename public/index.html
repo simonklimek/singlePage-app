@@ -66,6 +66,78 @@
             <div class="container">
                 <br><br>
 
+                <!-- Modal Trigger -->
+                <a class="waves-effect red waves-light btn modal-trigger" href="#modal1">Write article</a>
+
+                <!-- Modal Structure -->
+                <div id="modal1" class="modal bottom-sheet">
+                    <div class="modal-content">
+                        <a
+                            href="#!"
+                            class="modal-close waves-effect
+                                waves-green btn-flat right red-text ">
+                            Close
+                            <i class="large material-icons red-text">cancel</i>
+                        </a>
+                        <div class="row">
+
+                            <form class="col s12">
+
+                                <div class="row">
+                                    <div class="input-field col m6 s12">
+                                        <i class="material-icons prefix">title</i>
+                                        <input id="post_title" type="text" class="validate">
+                                        <label for="post_title">Post title</label>
+                                    </div>
+
+                                    <div class="input-field col m6 s12">
+                                        <i class="material-icons prefix">mode_edit</i>
+                                        <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                                        <label for="icon_prefix2">Post body</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="file-field input-field col m6 s12">
+                                        <div class="btn red lighten-3">
+                                            <span>Attach Picture</span>
+                                            <input type="file">
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col m6 s12">
+                                        <button
+                                            class="btn-large waves-effect red waves-light right"
+                                            type="submit"
+                                            name="action">Post
+                                            <i class="material-icons right">comment</i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                    <!-- <div class="modal-footer"> <a href="#!" class="modal-close waves-effect
+                    waves-green btn-flat">Agree</a> </div> -->
+                </div>
+                <script>
+
+                    document.addEventListener('DOMContentLoaded', function () {
+                        var elems = document.querySelectorAll('.modal');
+                        var instances = M
+                            .Modal
+                            .init(elems);
+                    });
+
+                    // Or with jQuery
+
+                    $(document).ready(function () {
+                        $('.modal').modal();
+                    });
+                </script>
+
                 <div class="row">
                     <div class="col m6 s12">
 
@@ -246,31 +318,10 @@
 
         <!-- Floating post buton -->
         <div class="fixed-action-btn">
-            <a class="btn-floating btn-large red">
+            <a class="btn-floating btn-large red modal-trigger" href="#modal1">
                 <i class="large material-icons">mode_edit</i>
             </a>
-            <ul>
-                <li>
-                    <a class="btn-floating red">
-                        <i class="material-icons">message</i>
-                    </a>
-                </li>
-                <li>
-                    <a class="btn-floating orange darken-1">
-                        <i class="material-icons">format_quote</i>
-                    </a>
-                </li>
-                <li>
-                    <a class="btn-floating green">
-                        <i class="material-icons">insert_photo</i>
-                    </a>
-                </li>
-                <li>
-                    <a class="btn-floating blue">
-                        <i class="material-icons">attach_file</i>
-                    </a>
-                </li>
-            </ul>
+
         </div>
         <!-- Scripts-->
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
