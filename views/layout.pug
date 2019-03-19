@@ -11,26 +11,31 @@ html
     body
         nav.light-blue.lighten-1(role="navigation")
             div.nav-wrapper.container
-                a.brand-logo(id="logo-container", href="#")
+                a.brand-logo(id="logo-container", href="/")
                     img(src="https://single-page-mdx.herokuapp.com/assets/logo.png", alt="", height="55px")
                 ul.right.hide-on-med-and-down
                     li 
                         a(href="/") Home
                     li 
-                        a(href="/register") Sign up
-                    li 
-                        a(href="#") Profile
-                    li 
                         a.modal-trigger(href="#modal1") Write post
+                    li 
+                        a(href="/register") Sign up / Login
+                    li 
+                        a(href="#") Edit profile
+                    li 
+                        a(href="#") Logout
+
                 ul.sidenav(id="nav-mobile")
                     li 
                         a(href="#") Home
                     li 
                         a(href="#") Sign up
                     li 
-                        a(href="#") Profile
+                        a(href="#") Edit profile
                     li 
                         a(href="#") Posts
+                    li 
+                        a(href="#") Logout
                 a.sidenav-trigger(href="#", data-target="nav-mobile")
                     i.material-icons menu
         
@@ -41,14 +46,18 @@ html
                 block content
                 br
                 br
-                block post_btn
 
-                a.waves-effect.red.waves-light.btn.modal-trigger(href="#modal1") Write article
+                //- a.waves-effect.red.waves-light.btn.modal-trigger(href="#modal1") Write article
 
                 .modal.bottom-sheet(id="modal1")
-                    .modal-content
-                        a.modal-close.waves-effect.waves-green.btn-flat.right.red-text(href="#!") Close
-                            i.large.material-icons.red-text cancel
+                    .modal-content.container
+                        .row.valign-wrapper
+                            .col.s8
+                                h6 POST TO SOCIAL CLUB
+                            .col.s4
+                                a.modal-close.waves-effect.waves-green.btn-flat.right.red-text(href="#!") Close
+                                    i.large.material-icons.red-text cancel
+                        
                         .row
                             .col.s12
                                 .row
@@ -60,9 +69,9 @@ html
                                         i.material-icons.prefix mode_edit
                                         textarea.materialize-textarea(id="textarea1")
                                         label(for="textarea1") Post body
-                                .row
+                                .row.valign-wrapper
                                     .file-field.input-field.col.m6.s12
-                                        .btn.red.lighten-3
+                                        .btn.red.lighten-2
                                             span Attach picture
                                             input(type="file")
                                         .file-path-wrapper
@@ -70,13 +79,16 @@ html
                                     .col.m6.s12
                                         button.btn-large.waves-effect.red.waves-light.right(type="submit", name="post_action") Post
                                             i.material-icons.right comment
-
+                
+                .fixed-action-btn
+                    a.btn-floating.btn-large.red.modal-trigger.hoverable(href="#modal1")
+                        i.large.material-icons mode_edit
 
                 br
                 br
         footer.page-footer.orange
             div.container
-                div.row.valign-wrapper 
+                div.row
                     div.col.l6.s12 
                         img(src="https://single-page-mdx.herokuapp.com/assets/logo-white.png", alt="", height="85px")
                     div.col.l3.s12 
@@ -92,10 +104,6 @@ html
             div.footer-copyright 
                 div.container Made by
                     a.orange-text.text-lighten-3(href="#")  Simon's network 
-
-        .fixed-action-btn
-            a.btn-floating.btn-large.red.modal-trigger(href="#modal1")
-                i.large.material-icons mode_edit
     
     script(src="https://code.jquery.com/jquery-2.1.1.min.js")
     script(src="https://single-page-mdx.herokuapp.com/js/materialize.js")

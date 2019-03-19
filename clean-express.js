@@ -25,12 +25,31 @@ app.use(bodyParser.json());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-// Test login page /login/login.html
-app.get('/login', function(req, res) {
-	res.sendFile(path.join(__dirname + '/login/login.html'));
+// Handle registration
+app.post('/reg', function(req, res) {
+    // console.log("req",req.body);
+    var today = new Date();
+    var usernamel = req.body.usernamelog;
+    var passwordl = req.body.passwordlog;
+     
+    pool.query('INSERT INTO accounts SET ?',[usernamel, passwordl], function (error, results, fields) {
+    if (error) {
+      console.log("error ocurred",error);
+      res.send({
+        "code":400,
+        "failed":"error ocurred"
+      })
+    }else{
+      console.log('The solution is: ', results);
+      res.send({
+        "code":200,
+        "success":"user registered sucessfully"
+          });
+    }
+    });
 });
 
-// Our POST request
+// Our POST login request
 app.post('/auth', function(req, res) {
 	var username = req.body.username;
 	var password = req.body.password;
@@ -61,35 +80,17 @@ app.get('/home', function(req, res) {
 	res.end();
 });
 
-// POSTS
-
-// function handle_posts(req,res) {
-//     pool.query("SELECT * FROM posts",function(err,rows){
-//      if(err) {
-//          return res.json({'error': true, 'message': 'Error occurred'+err});
-//      }
-//              res.json(rows);
-//     });
-// }
-
 // RETREIVE POSTS FROM DB
 pool.query("SELECT * FROM posts", function(err, results) {
     if (err) throw err
     articles = results;
 });
 
-// USERS
+// RETREIVE USERS
 pool.query("SELECT * FROM accounts", function(err, results) {
     if (err) throw err
     usernames = results;
 });
-
-
-// POSTS
-
-// app.get("/handle_posts",function(req,res){
-//     handle_posts(req,res);
-// });
 
 app.get('/', function(req, res) {
     res.render('index', {
@@ -99,11 +100,6 @@ app.get('/', function(req, res) {
     });
 });
 
-app.get('/articles/add', function(req, res) {
-    res.render('add_article', {
-        title: "Add Articles"
-    });
-});
 
 app.get('/register', function(req, res) {
     res.render('register', {
@@ -111,11 +107,6 @@ app.get('/register', function(req, res) {
 });
 
 
-app.get('/post', function(req, res) {
-    res.render('add_article', {
-        title: "POST AN ARTICLE"
-    });
-});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -124,7 +115,7 @@ app.use(function(req, res, next) {
     next(err);
   });
   
-// error handler
+// error handler middleware
 app.use(function(err, req, res, next) {
 // set locals, only providing error in development
 // res.locals.message = err.message;
@@ -141,8 +132,6 @@ res.render('error', {
 app.listen(3000,function() {
     console.log('server started');
 })
-
-
 
 
 

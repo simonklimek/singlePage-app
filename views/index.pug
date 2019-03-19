@@ -4,14 +4,14 @@ block content
   .row 
     h3 SEARCH
     .col.s12 
-        .card-panel.blue-grey.lighten-5 
+        .card-panel.blue-grey.lighten-5.hoverable
             .row.valign-wrapper 
                 .input-field.col.m9.s12 
                     i.material-icons.prefix subdirectory_arrow_right 
                     input.autocomlete(type="text", id="autocomplete-input")
                     label(for="autocomplete-input") Autocomplete article search 
                 .col.m3.s12
-                    button.btn.waves-effect.orange.waves-light(type="submit", name="action") Search 
+                    button.btn.waves-effect.red.waves-light(type="submit", name="action") Search 
                         i.material-icons.right search 
   .row 
     .col.m8.s12 
@@ -44,6 +44,7 @@ block content
             | There's no users
             br
           else
-            ul.collection
+            ul.collection.hoverable
               each username in usernames
                 li.collection-item=username.username
+
